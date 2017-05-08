@@ -1,7 +1,6 @@
 /*jshint esversion: 6*/
 const express = require('express');
 const GitHub = require('github-api');
-const Repo = require('../models/repositories');
 const User = require('../models/user');
 
 
@@ -19,7 +18,6 @@ router.get("/", ensureAuthenticated, (req, res) => {
         if (err) {
             throw err;
         }
-        console.log(users);
         res.render('users/index', {
             users
         });
