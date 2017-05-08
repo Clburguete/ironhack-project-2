@@ -8,7 +8,19 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 router.get('/maps',function(req,res){
-  res.render('maps');
+  Event.find({},{"_id":0},(error,events)=>{
+    if (error) { next(error); }
+  else{
+  // let eventVar =  events.map(function(elem){
+  //     id = elem._id.toString();
+  //     elem["id"] = "id";
+  //     return elem;
+  //     console.log(elem)
+  //   });
+  //   // console.log(eventVar);
+    res.render('maps',{events});
+  }});
+
 });
 router.get('/createevent',(req,res) =>{
   res.render('createEvent');
@@ -26,7 +38,6 @@ router.post('/maps',(req, res, next) => {
       description: req.body.description,
       location:    location
     };
-console.log(newEvent);
 const event = new Event(newEvent);
   // Save the event to the Database
   event.save((error) => {
