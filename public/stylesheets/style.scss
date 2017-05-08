@@ -1,0 +1,39 @@
+@import "colors";
+
+body {
+  color: white;
+  background-color: $btn-color;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.jumbotron{
+  text-align: center;
+  background-color: $back-color;
+  border-radius: 1px;
+}
+a {
+  color: #00B7FF;
+}
+.btn{
+  color: $back-color;
+  background-color: $btn-color;
+  border: none;
+  width: 200px;
+  height: 50px;
+  padding-top: 10px;
+  border-radius: 0px;
+
+}
+p{
+  color: $back-color;
+}
+h2{
+  color: $back-color;
+}
+#map{
+  width: 60%;
+  height: 200px;
+}
+input{
+  color: $back-color;
+}
