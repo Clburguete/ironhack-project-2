@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 router.get('/maps',function(req,res){
-  Event.find({},{"_id":0},(error,events)=>{
+  Event.find({},{"_id":0, "members":0},(error,events)=>{
     if (error) { next(error); }
   else{
   // let eventVar =  events.map(function(elem){
@@ -19,6 +19,8 @@ router.get('/maps',function(req,res){
   //   });
   //   // console.log(eventVar);
     res.render('maps',{events});
+    console.log(events);
+
   }});
 
 });
