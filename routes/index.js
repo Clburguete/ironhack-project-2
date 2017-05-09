@@ -26,10 +26,10 @@ router.get('/createevent',(req,res) =>{
   res.render('createEvent');
 });
 router.post('/maps',(req, res, next) => {
-  // Get Params from POST
+//  Get Params from POST
   let location = {
     type: 'Point',
-    coordinates: [req.body.longitude, req.body.latitude]
+    coordinates: [req.body.lng, req.body.lat]
   };
 
   // Create a new event with location
