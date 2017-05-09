@@ -5,6 +5,7 @@ $(document).ready( () => {
   $('.userinfo').on('click', (e) => {
     const user = $(e.currentTarget).prev().html();
     github.getUserInfo(user);
+    github.getRepoLanguages(user);
   });
 
 });
