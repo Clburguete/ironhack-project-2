@@ -65,7 +65,7 @@ $(document).ready(function() {
         const EventForm = {
             name: $("#name").val(),
             description: $("#description").val(),
-
+          //  members: document.cookie.session.user,
             lat: latitude,
             lng: longitude
 
@@ -79,6 +79,7 @@ $(document).ready(function() {
             data: EventForm,
             success: function() {
                 console.log(EventForm);
+                console.log(document.cookie);
             },
             error: function() {
                 console.log("ERROR");

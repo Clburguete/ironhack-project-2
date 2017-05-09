@@ -22,7 +22,7 @@ router.get('/maps',function(req,res){
   }});
 
 });
-router.get('/createevent',(req,res) =>{
+router.get('/createevent',ensureAuthenticated,(req,res) =>{
   res.render('createEvent');
 });
 router.post('/maps',(req, res, next) => {
@@ -36,7 +36,8 @@ router.post('/maps',(req, res, next) => {
     const newEvent = {
       name:        req.body.name,
       description: req.body.description,
-      location:    location
+      location:    location,
+      members: [req.user._id]
     };
 const event = new Event(newEvent);
   // Save the event to the Database
@@ -47,5 +48,11 @@ const event = new Event(newEvent);
     }
   });
 });
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
 
+    res.redirect('/');
+}
 module.exports = router;

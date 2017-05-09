@@ -8,7 +8,6 @@ const router = express.Router();
 
 router.get("/", ensureAuthenticated, (req, res) => {
     // Get Github repositories
-    console.log("ha llegado");
     var gh = new GitHub({
         username: req.user.username,
         token: req.user.token
