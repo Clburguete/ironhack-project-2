@@ -12,6 +12,7 @@ const passport = require('./routes/auth');
 const index = require('./routes/index');
 const github = require('./routes/github');
 const users = require('./routes/users');
+const MongoStore         = require('connect-mongo')(session);
 
 
 
@@ -35,7 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
  secret: 'our-passport-local-strategy-app',
  resave: true,
- saveUninitialized: true
+ saveUninitialized: true,
+ store: new MongoStore( { mongooseConnection: mongoose.connection })
+
 }));
 //passport middleware configuration
 app.use(passport.initialize());

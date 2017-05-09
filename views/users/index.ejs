@@ -6,7 +6,7 @@
         <% users.forEach(function(user){ %>
 
             <td class="text-center"> <span class="badge"><%= user.username %></span></td>
-            <button type="button" onclick="userInfo('<%= user.username %>')" name="button">User Info</button>
+            <button type="button"  class="userinfo">User Info</button>
 
 
           <% }) %>
@@ -15,3 +15,5 @@
       </tbody>
   </section>
 </div>
+
+<script type="text/javascript" src="/javascripts/handler.js"></script>
