@@ -7,7 +7,7 @@ const Event = require('../models/events.js');
 router.get('/', function(req, res, next) {
   res.render('index');
 });
-router.get('/maps',function(req,res){
+router.get('/maps',ensureAuthenticated,function(req,res){
   Event.find({},{"_id":0, "members":0},(error,events)=>{
     if (error) { next(error); }
   else{
