@@ -13,6 +13,8 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
+var nodemon = require('gulp-nodemon');
+
 
 var jsFiles = './development/js/**/*.js';
 var jsDest = './public/javascripts/';
@@ -20,12 +22,31 @@ var jsDest = './public/javascripts/';
 var cssFiles = './development/**/*.css';
 var cssDest = './public/stylesheets/';
 
-// Servidor de desarrollo
-gulp.task('serve', function(){
-	browserSync.init({
-		server: {
-			baseDir: './public'
+//Nodemon included for Backend
+
+gulp.task('nodemon', function (cb) {
+
+	var started = false;
+
+	return nodemon({
+		script: './bin/www'
+	}).on('start', function () {
+		// to avoid nodemon being started multiple times
+		// thanks @matthisk
+		if (!started) {
+			cb();
+			started = true;
 		}
+	});
+});
+
+// Servidor de desarrollo
+gulp.task('serve', ['nodemon'], function(){
+  browserSync.init(null, {
+		proxy: "http://localhost:3000",
+        files: ["./public/**/*.*"],
+        browser: "google chrome",
+        port: 7000,
 	});
 });
 
@@ -66,6 +87,7 @@ gulp.task('css', function(){
 gulp.task('watch', function(){
 	gulp.watch(cssFiles, ['css']);
   gulp.watch(jsFiles, ['scripts']);
+  gulp.watch('./views/**/*.ejs').on('change', browserSync.reload);
 	gulp.watch('./dist/*.html').on('change', browserSync.reload);
 	gulp.watch(jsDest + '**/*.js').on('change', browserSync.reload);
 });
