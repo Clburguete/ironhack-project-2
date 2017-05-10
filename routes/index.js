@@ -11,13 +11,6 @@ router.get('/maps',ensureAuthenticated,function(req,res){
   Event.find({},{"_id":0, "members":0},(error,events)=>{
     if (error) { next(error); }
   else{
-  // let eventVar =  events.map(function(elem){
-  //     id = elem._id.toString();
-  //     elem["id"] = "id";
-  //     return elem;
-  //     console.log(elem)
-  //   });
-  //   // console.log(eventVar);
     res.render('maps',{events});
     console.log(events);
 

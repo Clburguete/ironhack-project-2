@@ -1,5 +1,8 @@
 @import "colors";
-
+canvas{
+  width: 200px;
+  height: 200px;
+}
 body {
   color: white;
   background-color: $btn-color;

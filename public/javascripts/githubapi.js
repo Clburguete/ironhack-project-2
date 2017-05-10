@@ -42,20 +42,37 @@ class GitHubApi {
       });
     }
     getRepoLanguages(username) {
-        $.ajax({
-            url: this.BASE_URL + username + '/repos',
-            method: "GET",
-            success: (response) => {
-                let promisesArray = response.map((repo) => this._getLanguages(repo.url));
-                Promise.all(promisesArray).then((responses) => {
-                  console.log("All promises completed");
-                  console.log(responses);
-                });
-            },
-            error: function(err) {
-                return err;
-            },
+      let languages = {};
+        return new Promise((resolve,reject) =>{
+          $.ajax({
+              url: this.BASE_URL + username + '/repos',
+              method: "GET",
+              success: (response) => {
+                  let promisesArray = response.map((repo) => this._getLanguages(repo.url));
+                  Promise.all(promisesArray).then((responses) => {
+                    console.log("All promises completed");
+                    //console.log(responses);
+                    responses.forEach(function(repo){
+                      Object.keys(repo).forEach( function (key) {
+                        if (languages[key]) {
+                          languages[key] += repo[key];
+                        } else {
+                          languages[key] = repo[key];
+                        }
+                      });
+                    });
 
+                    resolve(languages);
+
+                  });
+              },
+              error: function(err) {
+                  return err;
+              },
+
+          });
         });
+
+
     }
 }
