@@ -13,16 +13,6 @@ class GitHubApi {
 
             success: function(response) {
                 $('.user-info').remove();
-                //let keys = Object.keys(response);
-                // keys.forEach(function(l) {
-                //      if (response[l] !== null) {
-                //         $('#repositories').append(`<p class='user-info'>${l} ${response[l]}</p>`);
-                //      }
-                //
-                //
-                // });
-
-                console.log(response);
                 resolve (response);
             },
             error: function(err) {

@@ -8,7 +8,7 @@ function appendInfo(user) {
     });
 }
 
-function drawChart(label, data) {
+function doughnutChart(label, data) {
     let chart = document.getElementById("myChart");
     //chart.width(200);
     var myDoughnutChart = new Chart(chart, {
@@ -77,7 +77,7 @@ $(document).ready(() => {
             github.getRepoLanguages(user).then((response) => {
                 let languageLabel = Object.keys(response);
                 let languageData = Object.values(response);
-                drawChart(languageLabel, languageData);
+                doughnutChart(languageLabel, languageData);
             });
     });
 });

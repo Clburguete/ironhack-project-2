@@ -7,13 +7,11 @@ const Event = require('../models/events.js');
 router.get('/', function(req, res, next) {
   res.render('index');
 });
-router.get('/maps',ensureAuthenticated,function(req,res){
-  Event.find({},{"_id":0, "members":0},(error,events)=>{
+router.get('/maps',ensureAuthenticated,function(req,res,next){
+  Event.find({},{"members":0},(error,events)=>{
     if (error) { next(error); }
   else{
-    res.render('maps',{events});
-    console.log(events);
-
+    res.render('maps',{events: JSON.stringify(events)});
   }});
 
 });
@@ -43,6 +41,14 @@ const event = new Event(newEvent);
     }
   });
 });
+
+// router.get('/events/all',(req, res, next) =>{
+//   Event.find({}, (events) => {
+//     res.type('application/json');
+//     res.send(events);
+//   });
+// });
+
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
