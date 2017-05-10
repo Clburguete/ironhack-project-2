@@ -6,7 +6,6 @@ class GitHubApi {
     }
 
     getUserInfo(username) {
-        //console.log(username)
         $.ajax({
             url: this.BASE_URL + username,
             method: "GET",
@@ -31,7 +30,6 @@ class GitHubApi {
         });
     }
 
-    //GET /repos/:owner/:repo/languages
     _getLanguages(repoUrl) {
       return new Promise((resolve,reject) =>{
         $.ajax({

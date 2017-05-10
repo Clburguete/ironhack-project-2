@@ -8,19 +8,7 @@ $(document).ready(function() {
 
 
     let markers = [];
-    // myEvents.forEach(function(event) {
-    //     let title = event.name;
-    //     let position = {
-    //         lat: event.location.coordinates[1],
-    //         lng: event.location.coordinates[0]
-    //     };
-    //     let pin = new google.maps.Marker({
-    //         position,
-    //         map,
-    //         title
-    //     });
-    //     markers.push(pin);
-    // });
+
 
 
     // Map initialization
