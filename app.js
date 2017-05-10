@@ -1,4 +1,5 @@
 /*jshint esversion: 6*/
+//Modifications of app.js to include several features
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');

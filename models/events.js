@@ -1,4 +1,5 @@
 /*jshint esversion: 6*/
+//Modifications of model
 const mongoose = require('mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
