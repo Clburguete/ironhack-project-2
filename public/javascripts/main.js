@@ -140,7 +140,7 @@ $(document).ready(function(){
 
   function joinEvent() {
     var url = document.location.origin;
-    var id = $(this)[0].parentElement.id;
+    var id = $(this)[0].parentElement.parentElement.id;
     $.ajax({
       method: 'GET',
       url: url+'/api/events/'+id+'/join',

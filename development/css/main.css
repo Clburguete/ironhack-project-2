@@ -12,6 +12,9 @@ html {
   align-items: center;
   flex-wrap: wrap;*/
   padding-top: 15px;
+  & p {
+    font-size: 1rem;
+  }
 }
 .section-container {
   width: calc(100% / 3);

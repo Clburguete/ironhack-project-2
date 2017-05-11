@@ -14,6 +14,11 @@ html {
   padding-top: 15px;
 }
 
+.main-container p {
+    font-size: 14.4px;
+    font-size: 1rem;
+  }
+
 .section-container {
   width: 33.33333%;
   display: inline-block;
