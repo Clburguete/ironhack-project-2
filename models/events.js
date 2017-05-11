@@ -6,10 +6,11 @@ const findOrCreate = require('mongoose-findorcreate');
 const EventSchema = mongoose.Schema({
   location: { type: { type: String }, coordinates: [Number] },
     members: [mongoose.Schema.ObjectId],
-    from: Date,
-    to: Date,
+    from: {type: Date},
+    to: {type: Date},
     name: String,
     description: String,
+    languages: [String],
 });
 EventSchema.index({ location: '2dsphere' });
 EventSchema.plugin(findOrCreate);

@@ -15,14 +15,16 @@ const github = require('./routes/github');
 const users = require('./routes/users');
 const MongoStore         = require('connect-mongo')(session);
 
-
+//require files for events
+const api = require('./routes/api/index.js');
+const events = require('./routes/events/index.js');
 
 const app = express();
 mongoose.connect('mongodb://localhost/lab-passport-roles');
 
 // view engine setup
 app.use(layouts);
-app.set("layout", "layout");
+app.set("layout", "layouts/default");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -47,6 +49,10 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/auth/github', github);
 app.use('/users', users);
+
+//routes included for events
+app.use('/api', api);
+app.use('/events', events);
 
 
 // catch 404 and forward to error handler
