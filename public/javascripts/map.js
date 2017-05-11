@@ -1,15 +1,5 @@
 /*jshint esversion: 6*/
-// $.ajax({
-//     url: '/events/all',
-//     method: "GET",
-//     success: function(response) {
-//         console.log(response);
-//         console.log('hola');
-//     },
-//     error: function(err) {
-//         console.log(err);
-//     },
-// });
+
 
 $(document).ready(function() {
   const center = {
@@ -34,7 +24,6 @@ $(document).ready(function() {
       });
       markers.push(pin);
   });
-console.log(markers);
 
   // Map initialization
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -46,10 +35,7 @@ console.log(markers);
           markers[i].setMap(map);
       }
 
-//console.log(markers);
-  // function clearMarkers() {
-  //     setMapOnAll(null);
-  // }
+
 
 
 
