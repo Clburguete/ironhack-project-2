@@ -12,8 +12,8 @@ function createDataset(user,data,color){
 
   return   {
     label: user.username,
-    backgroundColor: "rgba(179,181,198,0.2)",
-    borderColor: color,
+    backgroundColor: color,
+    //borderColor: color,
     data: data
   };
 

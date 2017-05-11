@@ -2,13 +2,12 @@
   <section id="repositories">
       <tbody>
 
-        <% users.forEach(function(user){ %>
-
-            <td class="text-center"> <span class="badge"><%= user.username %></span></td>
-            <button type="button"  class="userinfo">User Info</button>
 
 
-          <% }) %>
+            <td class="text-center"> <h1 id="username" class="badge"><%= data.username %></h1></td>
+
+
+
           <a href="/maps">MAPS</a>
           <section id="userinfo">
 
@@ -17,6 +16,6 @@
       </tbody>
   </section>
 </div>
-<script src="chart.js/dist/Chart.js"></script>
+<script src="/chart.js/dist/Chart.js"></script>
 
 <script type="text/javascript" src="/javascripts/handler.js"></script>

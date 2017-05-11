@@ -89,26 +89,25 @@ function infoSelector(info) {
         console.log(l + " " + info[l]);
         switch (l) {
             case "login":
-                $('#userinfo').append(`<h5>Username</h5> <p class='user-info'>@${info[l]}</p>`);
+                $('.col-xs-10 col-xs-offset-1').append(`<h5>Username</h5> <h5 class='user-info'>@${info[l]}</h5>`);
 
                 break;
             case "html_url":
-                $('#userinfo').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
+                $('.col-xs-10 col-xs-offset-1').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
 
                 break;
             case 'public_repos':
-                $('#userinfo').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
+                $('.col-xs-10 col-xs-offset-1').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
 
                 break;
         }
     });
 }
 $(document).ready(() => {
-    //radarChart();
-    $('.userinfo').on('click', (e) => {
-          $('#userinfo').empty();
-        const user = $(e.currentTarget).prev().html();
-        console.log("llega");
+
+
+        const user = $('#username').html();
+        console.log(user);
         $('#myChart').remove();
         appendInfo(user);
 
@@ -122,5 +121,5 @@ $(document).ready(() => {
 
 
             });
-    });
+
 });
