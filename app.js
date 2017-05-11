@@ -1,4 +1,5 @@
 /*jshint esversion: 6*/
+//Modifications of app.js to include several features
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -14,14 +15,16 @@ const github = require('./routes/github');
 const users = require('./routes/users');
 const MongoStore         = require('connect-mongo')(session);
 
-
+//require files for events
+const api = require('./routes/api/index.js');
+const events = require('./routes/events/index.js');
 
 const app = express();
 mongoose.connect('mongodb://localhost/lab-passport-roles');
 
 // view engine setup
 app.use(layouts);
-app.set("layout", "layout");
+app.set("layout", "layouts/default");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -49,6 +52,10 @@ app.use('/', index);
 app.use('/auth/github', github);
 app.use('/users', users);
 
+//routes included for events
+app.use('/api', api);
+app.use('/events', events);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -69,3 +76,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//Probando rama develop-events
