@@ -57,7 +57,7 @@ $(document).ready(() => {
         let filteredData = dataFilter(response);
         let filteredValues = Object.values(filteredData);
         console.log("values: "+ filteredValues);
-        var DataSet = createDataset(member, filteredValues, "#000");
+        var DataSet = createDataset(member, filteredValues, "rgba(238,110,115, 0.4)");
         allData.push(DataSet);
         //console.log(allData);
         radarChart(allData);
