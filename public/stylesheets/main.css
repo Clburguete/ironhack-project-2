@@ -100,3 +100,8 @@ html {
 .event-card__buttons a {
       margin-left: 20px;
     }
+
+#mapazo {
+  width: 100%;
+  height: 500px;
+}

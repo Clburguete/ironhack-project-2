@@ -1,4 +1,4 @@
-
+/* jshint esversion:6 */
 $(document).ready(function(){
 
   function joinEvent() {
@@ -40,6 +40,7 @@ $(document).ready(function(){
             createCard(elem);
           });
           $('.join_event').on('click', joinEvent);
+          createMapazo(data);
           console.log(data);
         }
       });
@@ -51,5 +52,47 @@ $(document).ready(function(){
     }
 
     test();
+
+function createMapazo(arr) {
+  var center = {
+      lat: 40.417080,
+      lng: -3.703612
+  };
+
+
+
+  var markers = [];
+  arr.forEach(function(event) {
+      var title = event.name;
+      var position = {
+          lat: event.location.coordinates[0],
+          lng: event.location.coordinates[1]
+      };
+      var pin = new google.maps.Marker({
+          position: position,
+          map: mapazo,
+          title: title
+      });
+      markers.push(pin);
+  });
+
+
+  // Map initialization
+  var mapazo = new google.maps.Map(document.getElementById('mapazo'), {
+      zoom: 15,
+      center: center
+  });
+
+      for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(mapazo);
+      }
+
+console.log(markers);
+  // function clearMarkers() {
+  //     setMapOnAll(null);
+  // }
+}
+
+
 
 });
