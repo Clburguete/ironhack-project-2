@@ -22,7 +22,7 @@ function radarChart(datasetArray){
   var radarChart = document.getElementById("radarChart");
 
   var radarData = {
-    labels: ["HTML", "Python", "JavaScript", "CSS", "Typescript"],
+    labels: ["HTML", "JavaScript", "CSS", "Typescript", "Python"],
     datasets: datasetArray,
     options: {
         responsive: false,
@@ -36,7 +36,7 @@ var myRadarChart = new Chart(radarChart, {
 });
 }
 function dataFilter(response){
-  const languages = ["HTML", "Python", "JavaScript", "CSS", "Typescript"];
+  const languages = ["HTML",  "JavaScript", "CSS", "Typescript","Python"];
   let languageData = {};
   let userLanguages = Object.keys(response);
   let languageValues = Object.values(response);

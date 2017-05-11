@@ -12,6 +12,13 @@
 <div class="row">
   <p><%= data.description %></p>
 </div>
+<div class="row">
+  <h4>Members</h4>
+  <% data.members.forEach(function(member){ %>
+    <p><%= member.username %></p>
+
+  <% })%>
+</div>
 </div>
 <div class = 'row'>
   <canvas id="radarChart" ></canvas>
