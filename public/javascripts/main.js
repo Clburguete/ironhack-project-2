@@ -56,7 +56,7 @@ $(document).ready(function(){
 
     var newLocation = new Location(autocomplete.getPlace().geometry.location.lat(), autocomplete.getPlace().geometry.location.lng());
     var newEvent = new Event(name, description, newLocation, from, to);
-    newEvent.members.push('5911925ea50bcf7ff3963066');
+
     languages.each(function(index){
       newEvent.languages.push(languages[index].firstChild.data);
     });

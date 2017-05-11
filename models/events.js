@@ -5,7 +5,7 @@ const findOrCreate = require('mongoose-findorcreate');
 
 const EventSchema = mongoose.Schema({
   location: { type: { type: String }, coordinates: [Number] },
-    members: [mongoose.Schema.ObjectId],
+    members: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     from: {type: Date},
     to: {type: Date},
     name: String,

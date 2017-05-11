@@ -9,10 +9,11 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Event.findById(req.params.id, {_id: 0} , function (err, event) {
-    console.log(event);
-    res.render('events/single.ejs', { data: event });
-  });
+
+  Event.findById(req.params.id, {_id: 0}).populate('members', 'username').exec((err, event) => {
+   console.log(event);
+   res.render('events/single.ejs', { data: JSON.stringify(event) });
+ });
 
 });
 
