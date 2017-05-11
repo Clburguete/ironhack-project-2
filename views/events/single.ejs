@@ -1,8 +1,30 @@
-<h1><%= data._id %></h1>
-<p></p>
+<div class =container>
+<div class="row">
+  <h1><%= data.name %></h1>
 
+</div>
+<div class="row">
+  <p><%= data.languages %></p>
+</div>
+<div class="row">
+  <h6><b>From</b> <%= data.from %><br> <b>To</b> <%= data.to %></h6>
+</div>
+<div class="row">
+  <p><%= data.description %></p>
+</div>
+</div>
+<div class = 'row'>
+  <canvas id="radarChart" ></canvas>
+</div>
 <script type="text/javascript">
-  var data = <%- data %>;
-  console.log(data);
+  var newData = <%-JSON.stringify(data)%>;
+
+
+
+  console.log(newData);
 
 </script>
+
+<script src="/chart.js/dist/Chart.js"></script>
+
+<script type="text/javascript" src="/javascripts/ev_graphhandler.js"></script>

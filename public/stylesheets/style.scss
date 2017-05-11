@@ -4,7 +4,7 @@ canvas{
 }
 body {
   color: white;
-  background-color: $btn-color;
+  background-color: #e5e5e5;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -36,6 +36,17 @@ h2{
   width: 60%;
   height: 200px;
 }
+.graph-container{
+  width: 150px;
+  height: 150px;
+}
 input{
   color: $back-color;
+}
+h6{
+  color: #62727b;
+}
+h1{
+
+color: #102027;
 }

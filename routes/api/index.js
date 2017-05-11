@@ -24,10 +24,14 @@ router.get('/events/:id', (req, res, next) => {
 });
 
 router.get('/events/:id/join', (req, res, next) => {
-  console.log('join event');
+  console.log(req.user._id);
   Event.findById(req.params.id, (err, event) => {
     if (event.members.indexOf(req.user._id) === -1) {
-      Event.update({ _id: req.params.id }, { $push: { members: req.user._id }});
+      console.log("entra");
+      Event.update({ _id: req.params.id }, { $push: { members: req.user._id }},(err, event)=>{
+        console.log(event);
+
+      });
     }
     res.json(event);
   });

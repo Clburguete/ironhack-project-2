@@ -7,7 +7,45 @@ function appendInfo(user) {
 
     });
 }
+function radarChart(){
+  var radarChart = document.getElementById("radarChart");
+  var myRadarChart = new Chart(radarChart, {
+    type: 'radar',
+    data: radarData,
+});
+  var radarData = {
+    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    datasets: [
+        {
+            label: "My First dataset",
+            backgroundColor: "rgba(179,181,198,0.2)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: [65, 59, 90, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            pointBackgroundColor: "rgba(255,99,132,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(255,99,132,1)",
+            data: [28, 48, 40, 19, 96, 27, 100]
+        },
 
+    ],
+    options: {
+      responsive: false,
+      scale: {
+          display: false,
+      }
+    },
+};
+}
 function doughnutChart(label, data) {
     let chart = document.getElementById("myChart");
     //chart.width(200);
@@ -50,34 +88,39 @@ function infoSelector(info) {
     keys.forEach(function(l) {
         console.log(l + " " + info[l]);
         switch (l) {
-            case "name":
-                $('#repositories').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
+            case "login":
+                $('#userinfo').append(`<h5>Username</h5> <p class='user-info'>@${info[l]}</p>`);
 
                 break;
             case "html_url":
-                $('#repositories').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
+                $('#userinfo').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
 
                 break;
             case 'public_repos':
-                $('#repositories').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
+                $('#userinfo').append(`<h5>${l}</h5> <p class='user-info'>${info[l]}</p>`);
 
                 break;
         }
     });
 }
 $(document).ready(() => {
+    //radarChart();
     $('.userinfo').on('click', (e) => {
+          $('#userinfo').empty();
         const user = $(e.currentTarget).prev().html();
-
+        console.log("llega");
         $('#myChart').remove();
         appendInfo(user);
 
-        $('#repositories').append(' <canvas id="myChart" width="300" height="300"></canvas>');
+        $('#userinfo').append(' <canvas id="myChart" width="300" height="300"></canvas>');
         let promiseArray =
             github.getRepoLanguages(user).then((response) => {
+              console.log(response);
                 let languageLabel = Object.keys(response);
                 let languageData = Object.values(response);
                 doughnutChart(languageLabel, languageData);
+
+
             });
     });
 });
