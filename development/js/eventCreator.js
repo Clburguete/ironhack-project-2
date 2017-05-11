@@ -81,7 +81,12 @@ $(document).ready(function(){
       data: {
         'Html': null,
         'Css': null,
-        'Javascript': null
+        'Javascript': null,
+        'Python': null,
+        'Typescript':null,
+        'Go!' : null,
+        'PhP' : null,
+        'Ruby' : null
       },
       limit: Infinity,
       minLength: 1
@@ -124,35 +129,8 @@ $(document).ready(function(){
     markers.push(newMarker);
   });
 
-  function test() {
-    var url = document.location.origin;
-
-    $.ajax({
-      method: 'GET',
-      url: url+'/api/events',
-      success: function(data) {
-        data.forEach(function(elem){
-          $('.collection').append('<li id="'+elem._id+'" class="collection-item">' +
-                '<p>'+elem.name+'</p>' +
-                '<p>'+elem.from+'</p>' +
-                '<p>'+elem.to+'</p>' +
-                '<p>'+elem._id+'</p>' +
-                '<p>Join</p>' +
-                '<p>More Info</p>' +
-                '</li>');
-
-        });
-
-        console.log(data);
-      }
-    });
 
 
 
-
-
-  }
-
-  test();
 
 });

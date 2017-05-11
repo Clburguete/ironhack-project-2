@@ -1,8 +1,24 @@
-<section class="section-container">
-  <header class="section-container__header">
+
+<section class="section-container col s12 m12 l8">
+  <header class="card section-container__header">
+    <h2>Event Hunter</h2>
+  </header>
+  <div class="card section-container__content">
+    <div>Filters</div>
+    <p>Distance Filter</p>
+    <p>Language Filter</p>
+    <p>Search Button</p>
+    <p>Map</p>
+  <ul class="collection">
+  </ul>
+
+  </div>
+</section>
+<section class="section-container col s12 m12 l4">
+  <header class="card section-container__header">
     <h2>New Event</h2>
   </header>
-  <div class="section-container__content">
+  <div class="card section-container__content">
     <form method="POST" action="/maps">
       <div class="row">
           <form class="col s12">
@@ -42,43 +58,19 @@
             <div id="map"></div>
             <div class="row">
               <div class="input-field col s12">
-                <div id="createEvent" class="waves-effect waves-light btn">Create<div>
+                <div id="createEvent" class="right waves-effect waves-light btn">Create<div>
               </div>
             </div>
-
           </form>
         </div>
     </form>
   </div>
 </section>
-<section class="section-container">
-  <header class="section-container__header">
-    <h2>Event Hunter</h2>
-  </header>
-  <div class="section-container__content">
-    <p>Filters</p>
-    <p>Distance Filter</p>
-    <p>Language Filter</p>
-    <p>Search Button</p>
-    <p>Map</p>
-  <ul class="collection">
-    <li class="collection-item">
-      <p>Name</p>
-      <p>From - To</p>
-      <p>Languages</p>
-      <p>Distance</p>
-      <p>Join</p>
-      <p>More Info</p>
-    </li>
-  </ul>
-
-  </div>
-</section>
-<section class="section-container">
+<!-- <section class="section-container col s12 m12 l4">
   <header class="section-container__header">
     <h2>Scheduled Events</h2>
   </header>
-  <div class="section-container__content">
+  <div class="card section-container__content">
     <p>Name</p>
     <p>From - To</p>
     <p>Languages</p>
@@ -86,7 +78,7 @@
     <p>Join</p>
     <p>More Info</p>
   </div>
-</section>
+</section> -->
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJN77Ru1GI4j9aXygNrZSA_CluLlat_6k&libraries=places"></script>
