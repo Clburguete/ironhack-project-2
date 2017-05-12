@@ -110,3 +110,25 @@ html {
   width: 100%;
   height: 500px;
 }
+
+#radarChart {
+  max-height: 600px!important;
+  height: 100%!important;
+  max-width: 600px!important;
+  width: 100%!important;
+  margin: auto;
+  padding-top: 30px;
+}
+
+#myChart {
+  margin: auto;
+  display: block;
+}
+
+.autocomplete-content.dropdown-content {
+  position: absolute;
+  width: 100%;
+}
+#username:before{
+  content: '@' 
+}

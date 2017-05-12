@@ -22,7 +22,10 @@ function radarChart(datasetArray){
   var radarChart = document.getElementById("radarChart");
 
   var radarData = {
+
     backgroundColor: "#fff",
+
+
     labels: ["HTML", "JavaScript", "CSS", "Typescript", "Python"],
     datasets: datasetArray,
     options: {

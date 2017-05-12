@@ -8,7 +8,8 @@ class GitHubApi {
     getUserInfo(username) {
       return new Promise ((resolve,reject)=>{
         $.ajax({
-            url: this.BASE_URL + username+"?access_token=dbef9ce4252a88007ddab220fa6af839bd312b82",
+            url: this.BASE_URL + username+"?access_token=ffaa6ee8e44d805b5ff3234f656e7daec74db0b0",
+
             method: "GET",
 
             success: function(response) {
@@ -26,7 +27,8 @@ class GitHubApi {
     _getLanguages(repoUrl) {
       return new Promise((resolve,reject) =>{
         $.ajax({
-            url: repoUrl + "/languages"+"?access_token=dbef9ce4252a88007ddab220fa6af839bd312b82",
+            url: repoUrl + "/languages"+"?access_token=ffaa6ee8e44d805b5ff3234f656e7daec74db0b0",
+
             method: "GET",
             success: (response) => {
                 resolve(response);
@@ -38,7 +40,9 @@ class GitHubApi {
       let languages = {};
         return new Promise((resolve,reject) =>{
           $.ajax({
-              url: this.BASE_URL + username + '/repos'+"?access_token=dbef9ce4252a88007ddab220fa6af839bd312b82",
+
+              url: this.BASE_URL + username + '/repos'+"?access_token=ffaa6ee8e44d805b5ff3234f656e7daec74db0b0",
+
               method: "GET",
               success: (response) => {
                   let promisesArray = response.map((repo) => this._getLanguages(repo.url));

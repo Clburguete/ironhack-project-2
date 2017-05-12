@@ -33,15 +33,32 @@ Event.prototype.save = function() {
     },
     success: function(data) {
       console.log(data);
+      insertCard(data);
     }
   });
 
 };
 
-Event.prototype.clear = function() {
-  var form = $(this).closest('form');
+function insertCard(event) {
+  var languagesChips = '';
+  event.languages.forEach(function(elem) {
+    languagesChips += '<div class="chip">'+elem+'</div>';
+  });
+  $('.collection').prepend(
+        '<li id="'+ event._id +'" class="collection-item event-card" style="padding: 0px; opacity:0; height:0px; transition: all 1s ease; overflow: hidden">' +
+        '<h4 class="event-card__name">'+event.name+'</h4>' +
+        '<div class="event-card__languages">'+languagesChips+'</div>' +
+        '<div class="event-card__date"><span>'+event.from.substring(0, event.from.indexOf('T'))+'</span>' +
+        '<span>'+event.to.substring(0, event.to.indexOf('T'))+'</span></div>' +
+        '<div class="event-card__buttons"><a href="/events/'+event._id+'" class="waves-effect waves-light btn">View More</a>' +
+        '<a class="waves-effect waves-light btn join_event">Join</a></div>' +
+        '</li>');
+  setTimeout(function(){
+      $('.collection > li:first-child').css('height', '160px').css('opacity', '1').css('padding', '');
+  }, 100);
 
-};
+}
+
 
 
 $(document).ready(function(){
@@ -65,6 +82,14 @@ $(document).ready(function(){
     $(this).closest('form').find("input[type=text], textarea").val("");
     $(this).closest('form').find('#createEvent__languages > .chip').remove();
     $(this).closest('form').find('label.active').removeClass('active');
+
+    map.setZoom(5);
+    map.setCenter({
+        lat: 40.415363,
+        lng: -3.703612
+    });
+    markers[0].setMap(null);
+    markers.pop();
 
   });
 
