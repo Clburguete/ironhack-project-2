@@ -13,7 +13,7 @@ function createDataset(user,data,color){
   return   {
     label: user.username,
     backgroundColor: color,
-    //borderColor: color,
+    borderColor: color,
     data: data
   };
 
@@ -22,11 +22,11 @@ function radarChart(datasetArray){
   var radarChart = document.getElementById("radarChart");
 
   var radarData = {
+    backgroundColor: "#fff",
     labels: ["HTML", "JavaScript", "CSS", "Typescript", "Python"],
     datasets: datasetArray,
     options: {
         responsive: false,
-
       }
 
 };
@@ -47,22 +47,28 @@ function dataFilter(response){
       languageData[languages[i]]= response[languages[i]];
     }
   }
-  console.log(languageData);
+  //console.log(languageData);
   return languageData;
 }
-$(document).ready(() => {
-  let allData = [];
-    newData.members.forEach(function(member){
-      github.getRepoLanguages(member.username).then((response)=>{
-        let filteredData = dataFilter(response);
-        let filteredValues = Object.values(filteredData);
-        console.log("values: "+ filteredValues);
-        var DataSet = createDataset(member, filteredValues, "rgba(238,110,115, 0.4)");
-        allData.push(DataSet);
-        //console.log(allData);
-        radarChart(allData);
+function documentReady(){
+  return new Promise((resolve, reject)=>{
+      var promiseArray = newData.members.map(function(member){
+        return github.getRepoLanguages(member.username).then((response)=>{
+          let filteredData = dataFilter(response);
+          let filteredValues = Object.values(filteredData);
+          //console.log("values: "+ filteredValues);
+          return createDataset(member, filteredValues, "rgba(238,110,115, 0.4)");
+        });
       });
-    });
+      Promise.all(promiseArray).then(allData => resolve(allData));
+  });
+}
+$(document).ready(() => {
+  documentReady().then((response)=>{
+    console.log("llega");
+    radarChart(response);
+    console.log(response);
+  });
     //radarChart();
 
 });
