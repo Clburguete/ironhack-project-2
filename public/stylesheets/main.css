@@ -82,7 +82,7 @@ html {
 }
 
 .event-card__date {
-    top: 15px;
+    top: 10px;
     right: 15px;
     position: absolute;
   }
@@ -129,6 +129,7 @@ html {
   position: absolute;
   width: 100%;
 }
+
 #username:before{
-  content: '@' 
+  content: '@'
 }
