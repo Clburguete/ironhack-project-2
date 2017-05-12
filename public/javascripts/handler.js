@@ -23,13 +23,25 @@ function doughnutChart(label, data) {
                     "#F59A44",
                     "#E3C598",
                     "#8A6E64",
-                    "#6E612F"
+                    "#6E612F",
+                    '#D6CFC9',
+                    '#C2C290',
+                    '#4A572C',
+                    '#803018',
+                    '#E34819'
                 ],
                 hoverBackgroundColor: [
                     "#FF6344",
                     "#36A2EB",
                     "#FF6384",
-                    "#FFCE56"
+                    "#FFCE56",
+                    "#E3C598",
+                    "#8A6E64",
+                    "#6E612F",
+                    '#D6CFC9',
+                    "#F59A44",
+                    "#6E612F",
+                    '#D6CFC9'
                 ],
                 borderWidth: 0
             }]
