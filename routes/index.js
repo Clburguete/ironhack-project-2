@@ -5,24 +5,17 @@ const Event = require('../models/events.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index', {layout: 'layouts/home'});
 });
-router.get('/maps',function(req,res){
-  Event.find({},{"_id":0},(error,events)=>{
+router.get('/maps',ensureAuthenticated,function(req,res,next){
+  Event.find({},{"members":0},(error,events)=>{
     if (error) { next(error); }
   else{
-  // let eventVar =  events.map(function(elem){
-  //     id = elem._id.toString();
-  //     elem["id"] = "id";
-  //     return elem;
-  //     console.log(elem)
-  //   });
-  //   // console.log(eventVar);
-    res.render('maps',{events});
+    res.render('maps',{events: JSON.stringify(events)});
   }});
 
 });
-router.get('/createevent',(req,res) =>{
+router.get('/createevent',ensureAuthenticated,(req,res) =>{
   res.render('createEvent');
 });
 router.post('/maps',(req, res, next) => {
@@ -36,7 +29,8 @@ router.post('/maps',(req, res, next) => {
     const newEvent = {
       name:        req.body.name,
       description: req.body.description,
-      location:    location
+      location:    location,
+      members: [req.user._id]
     };
 const event = new Event(newEvent);
   // Save the event to the Database
@@ -48,4 +42,18 @@ const event = new Event(newEvent);
   });
 });
 
+// router.get('/events/all',(req, res, next) =>{
+//   Event.find({}, (events) => {
+//     res.type('application/json');
+//     res.send(events);
+//   });
+// });
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+
+    res.redirect('/');
+}
 module.exports = router;

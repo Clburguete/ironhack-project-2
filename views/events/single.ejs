@@ -1,0 +1,42 @@
+<section class="collection card section-container col s12">
+  <div class="collection-item event-card">
+  <div class="row">
+    <h1 class="event-card__name"><%= data.name %></h1>
+
+  </div>
+  <div class="event-card__languages">
+    <% data.languages.forEach(function(elem){%>
+      <div class="chip"><%=elem %></div>
+    <% }) %>
+  </div>
+  <div class="row">
+    <h6><b>From</b> <%= data.from %><br> <b>To</b> <%= data.to %></h6>
+  </div>
+  <div class="row">
+    <p><%= data.description %></p>
+  </div>
+  <div class="row">
+    <h4>Members</h4>
+    <% data.members.forEach(function(member){ %>
+      <a  href="/users/<%= member.username %>">
+      <span class="new badge" data-badge-caption="@<%= member.username %>"></span>
+      </a>
+    <% })%>
+  </div>
+  </div>
+  <div class = 'row'>
+    <canvas id="radarChart" ></canvas>
+  </div>
+</section>
+<script type="text/javascript">
+  var newData = <%-JSON.stringify(data)%>;
+
+
+
+  console.log(newData);
+
+</script>
+
+<script src="/chart.js/dist/Chart.js"></script>
+
+<script type="text/javascript" src="/javascripts/ev_graphhandler.js"></script>

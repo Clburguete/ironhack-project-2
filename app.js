@@ -1,4 +1,5 @@
 /*jshint esversion: 6*/
+//Modifications of app.js to include several features
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -12,15 +13,18 @@ const passport = require('./routes/auth');
 const index = require('./routes/index');
 const github = require('./routes/github');
 const users = require('./routes/users');
+const MongoStore         = require('connect-mongo')(session);
 
-
+//require files for events
+const api = require('./routes/api/index.js');
+const events = require('./routes/events/index.js');
 
 const app = express();
 mongoose.connect('mongodb://localhost/lab-passport-roles');
 
 // view engine setup
 app.use(layouts);
-app.set("layout", "layout");
+app.set("layout", "layouts/default");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -31,11 +35,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+
 //passport session configuration
 app.use(session({
  secret: 'our-passport-local-strategy-app',
  resave: true,
- saveUninitialized: true
+ saveUninitialized: true,
+ store: new MongoStore( { mongooseConnection: mongoose.connection })
+
 }));
 //passport middleware configuration
 app.use(passport.initialize());
@@ -43,6 +51,10 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/auth/github', github);
 app.use('/users', users);
+
+//routes included for events
+app.use('/api', api);
+app.use('/events', events);
 
 
 // catch 404 and forward to error handler
@@ -64,3 +76,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//Probando rama develop-events

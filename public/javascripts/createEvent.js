@@ -8,19 +8,7 @@ $(document).ready(function() {
 
 
     let markers = [];
-    // myEvents.forEach(function(event) {
-    //     let title = event.name;
-    //     let position = {
-    //         lat: event.location.coordinates[1],
-    //         lng: event.location.coordinates[0]
-    //     };
-    //     let pin = new google.maps.Marker({
-    //         position,
-    //         map,
-    //         title
-    //     });
-    //     markers.push(pin);
-    // });
+
 
 
     // Map initialization
@@ -65,7 +53,7 @@ $(document).ready(function() {
         const EventForm = {
             name: $("#name").val(),
             description: $("#description").val(),
-
+          //  members: document.cookie.session.user,
             lat: latitude,
             lng: longitude
 
@@ -79,6 +67,7 @@ $(document).ready(function() {
             data: EventForm,
             success: function() {
                 console.log(EventForm);
+                console.log(document.cookie);
             },
             error: function() {
                 console.log("ERROR");

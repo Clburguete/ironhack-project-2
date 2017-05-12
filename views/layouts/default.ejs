@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitSocial</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/main.min.css">
+  <script src="/javascripts/githubapi.js"></script>
+
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="/events/"><i class="material-icons" style="transform: rotate(45deg);">call_received</i></a></li>
+        </ul>
+        <a href="/events/" class="brand-logo center">GitSocial</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/"><i class="material-icons">input</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-container row">
+    <%- body %>
+  </main>
+
+</body>
+</html>
