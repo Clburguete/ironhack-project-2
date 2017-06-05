@@ -15,12 +15,13 @@ const github = require('./routes/github');
 const users = require('./routes/users');
 const MongoStore         = require('connect-mongo')(session);
 
+require("dotenv").config();
 //require files for events
 const api = require('./routes/api/index.js');
 const events = require('./routes/events/index.js');
 
 const app = express();
-mongoose.connect('mongodb://localhost/lab-passport-roles');
+mongoose.connect(process.env.MONGODB_URI);
 
 // view engine setup
 app.use(layouts);

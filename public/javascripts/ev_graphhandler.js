@@ -68,9 +68,7 @@ function documentReady(){
 }
 $(document).ready(() => {
   documentReady().then((response)=>{
-    console.log("llega");
     radarChart(response);
-    console.log(response);
   });
     //radarChart();
 
